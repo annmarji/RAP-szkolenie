@@ -1,0 +1,22 @@
+extension implementation in class zbp_03x_r_travel_class unique;
+
+extend behavior for Travel
+{
+  extend draft determine action Prepare
+  { validation TravelItem~zzvalidateClass; }
+}
+
+extend behavior for TravelItem
+with additional save
+{
+  validation ZZvalidateClass on save { create; field zzClassZ03; }
+
+  determine action ( authorization : none ) ZZcheckClass
+  { validation ZZvalidateClass; }
+
+  side effects
+  { determine action ZZcheckClass
+    executed on field zzClassZ03
+    affects messages; }
+
+}

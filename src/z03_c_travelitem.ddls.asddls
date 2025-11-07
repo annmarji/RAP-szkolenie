@@ -1,6 +1,7 @@
 @EndUserText.label: 'Flight Travel Item (Projection)'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @Metadata.allowExtensions: true
+@AbapCatalog.viewEnhancementCategory: [#PROJECTION_LIST]
 @AbapCatalog.extensibility:{
     extensible: true,
     allowNewDatasources: false, 
