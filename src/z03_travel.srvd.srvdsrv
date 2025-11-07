@@ -1,0 +1,11 @@
+@EndUserText.label: 'Flight Travel Service Definition'
+@ObjectModel: {
+  leadingEntity: {
+    name: 'Z03_C_Travel'
+  }
+}
+define service Z03_TRAVEL
+  provider contracts odata_v4_ui {
+  expose Z03_C_Travel     as Travel;
+  expose Z03_C_TRAVELITEM as TravelItem;
+}

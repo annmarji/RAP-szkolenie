@@ -1,0 +1,10 @@
+@Metadata.layer: #CUSTOMER
+annotate view Z03_C_TRAVELITEM
+    with 
+{
+    @UI: { lineItem: [ { position: 65, importance: #HIGH } ], 
+           identification: [ { position: 65, importance: #HIGH } ],
+           fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 55 } ] }
+    zzClassZ03;
+    
+}

@@ -1,0 +1,99 @@
+@Metadata.layer: #CORE
+
+@UI: {
+   headerInfo: {
+     typeName: 'Flight Travel Item',
+     typeNamePlural: 'Flight Travel Items'
+               }
+     }
+
+annotate view Z03_C_TRAVELITEM with
+{
+  //
+  //    @UI.facet: [
+  //                { id:            'Booking',
+  //                  purpose:       #STANDARD,
+  //                  type:          #IDENTIFICATION_REFERENCE,
+  //                  label:         'Travel Item',
+  //                  position:      10 } ]
+
+  @UI.facet: [
+
+                { id:            'Booking',
+                  type:          #COLLECTION,
+                  label:         'Flight',
+                  position:      10 } ,
+
+                  { id:            'Flight',
+                    type:          #FIELDGROUP_REFERENCE,
+                    label:         'Flight data',
+                    parentId: 'Booking' ,
+                    targetQualifier: 'Fieldgroup1',
+                    position:      10 } ,
+
+                  { id:            'Customer',
+                    type:          #FIELDGROUP_REFERENCE,
+                    label:         'Customer data',
+                    parentId:       'Booking' ,
+                    targetQualifier: 'Fieldgroup2',
+                    position:      20 }
+
+  ]
+
+
+  @UI.hidden: true
+  ItemUuid;
+
+  @UI: {
+        identification: [ { position: 10, importance: #LOW,  qualifier: 'Booking' } ],
+        fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 10 } ]
+      }
+  AgencyId;
+  @UI: {
+          identification: [ { position: 20, importance: #LOW,   qualifier: 'Booking' } ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 20 } ]
+        }
+  TravelId;
+  @UI: {
+          identification: [ { position: 30, importance: #HIGH,   qualifier: 'Booking' } ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 30 } ]
+        }
+
+  CarrierId;
+  @UI: {
+          lineItem:       [ { position: 40, importance: #HIGH } ],
+          identification: [ { position: 40, importance: #HIGH,   qualifier: 'Booking' } ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 40 } ]
+        }
+  ConnectionId;
+  @UI: {
+          lineItem:       [ { position: 50, importance: #HIGH } ],
+          identification: [ { position: 50, importance: #HIGH,  qualifier: 'Booking' } ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 50 } ]
+        }
+  FlightDate;
+  @UI: {
+          lineItem:       [ { position: 60, importance: #HIGH } ],
+          identification: [ { position: 60, importance: #HIGH,   qualifier: 'Booking' } ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup1', position: 60 } ]
+        }
+  BookingId;
+  @UI: {
+          identification: [ { position: 70, importance: #MEDIUM,  qualifier: 'Booking' } ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup2', position: 10 } ]
+       }
+  PassengerFirstName;
+  @UI: {
+          identification: [ { position: 80, importance: #MEDIUM,   qualifier: 'Booking'} ],
+          fieldGroup:     [ { qualifier: 'Fieldgroup2', position: 20 } ]
+       }
+  PassengerLastName;
+
+  @UI.hidden: true
+  ChangedAt;
+  @UI.hidden: true
+  ChangedBy;
+  @UI.hidden: true
+  LocChangedAt;
+
+}

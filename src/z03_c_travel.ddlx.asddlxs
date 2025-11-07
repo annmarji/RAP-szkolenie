@@ -1,0 +1,92 @@
+@Metadata.layer: #CORE
+
+@UI: {
+   headerInfo: {
+     typeName: 'Flight Travel',
+     typeNamePlural: 'Flight Travels',
+     title:          { value: 'Description', type: #STANDARD},
+     description:    { value: 'Description', type: #STANDARD }
+               }
+     }
+annotate view Z03_C_Travel with
+{
+  @UI.facet: [ { id:            'Travel',
+                  purpose:       #STANDARD,
+                  type:          #IDENTIFICATION_REFERENCE,
+                  label:         'Travel',
+                  position:      10 },
+                  
+               { id:            'TravelLine',
+                  purpose:       #STANDARD,
+                  type:          #LINEITEM_REFERENCE,
+                  label:         'Travel Items',
+                  position:      20,
+                  targetElement: '_TravelItem' }
+             ]
+
+  @UI: {
+         identification: [ { position: 10, importance: #LOW } ]
+       }
+  AgencyId;
+
+  @UI: {
+         identification: [ { position: 20, importance: #HIGH } ],
+         selectionField: [ { position: 10  }]
+       }
+  TravelId;
+
+  @UI: {
+         lineItem:       [ { position: 20, importance: #HIGH } ],
+         identification: [ { position: 30, importance: #HIGH } ]
+       }
+
+  Description;
+
+  @UI: {
+         lineItem:       [ { position: 30, importance: #MEDIUM } ],
+         identification: [ { position: 40, importance: #MEDIUM } ],
+         selectionField: [ { position: 20 }]
+       }
+
+  CustomerId;
+
+  @UI: {
+         lineItem:       [ { position: 40, importance: #MEDIUM } ],
+         identification: [ { position: 50, importance: #MEDIUM } ]
+       }
+
+  BeginDate;
+
+  @UI: {
+         lineItem:       [ { position: 50, importance: #LOW } ],
+         identification: [ { position: 60, importance: #LOW } ]
+       }
+  EndDate;
+
+  @UI: {
+         lineItem:       [ { position: 35, importance: #LOW } ],
+         identification: [ { position: 65, importance: #LOW } ]
+       }
+  Duration;
+
+  @UI: {
+         lineItem:       [ { position: 10, importance: #HIGH },
+                           { type: #FOR_ACTION,
+                             dataAction: 'cancel',
+                             label: 'Cancel travel' }  ],
+         identification: [ { position: 70, importance: #HIGH },
+                           { type: #FOR_ACTION,
+                             dataAction: 'cancel',
+                             label: 'Cancel' }  ]
+       }
+  Status;
+
+  @UI.hidden: true
+  ChangedAt;
+
+  @UI.hidden: true
+  ChangedBy;
+
+  @UI.hidden: true
+  LocChangedAt;
+}
